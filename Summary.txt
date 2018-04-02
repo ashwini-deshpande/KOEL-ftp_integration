@@ -1,0 +1,4 @@
+IRC406/Position code already exists. Please provide different position code.
+IRC408/Position code already exists. Please provide different position code.
+IRC409/Position code already exists. Please provide different position code.
+IRC369/Position code already exists. Please provide different position code.

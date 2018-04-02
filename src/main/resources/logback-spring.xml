@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<springProperty scope="context" name="logFilePath" source="logging.path"/>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<Target>System.out</Target>
+		<encoder>
+			<Pattern>.%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg %n
+			</Pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ALL</level>
+		</filter>
+	</appender>
+
+	<appender name="RFA"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logFilePath}/scheduler/talentpool-api-scheduler.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${logFilePath}/scheduler/talentpool-api-scheduler.%d{yyyy-MM-dd}.gz
+			</FileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} - %msg %n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.talentica" additivity="false">
+		<level value="WARN" />
+	    <level value="DEBUG" />
+	    <level value="TRACE" />
+		<appender-ref ref="RFA"/>
+	 	<appender-ref ref="console" />
+		<level value="TRACE" />
+	</logger>
+
+	<root>
+		<level value="warn" />
+		<appender-ref ref="console" />
+		<appender-ref ref="RFA" />
+	</root>
+
+</configuration>

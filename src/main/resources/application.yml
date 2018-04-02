@@ -1,0 +1,38 @@
+logging:
+  config: classpath:logback-spring.xml
+  path: /KOEL/position-creation
+  
+scheduler.active: true
+
+server:
+  port: 8081
+  contextPath: /ftp_integration
+  
+talentpool-api:
+  url: http://localhost:8090/talentpool-api
+  username: hrmanager
+  password: 123123
+
+position.creation.job.cron: 0 0/1 * 1/1 * ?
+ftp.downloader.job.cron: 0 0/1 * 1/1 * ?
+
+ftp:
+   active: false
+   host: 172.19.141.101
+   port: 21
+   username: ftpuser
+   password: 123123
+   remote.from.directory: /FromClient
+   remote.to.directory: /ToClient
+   local.directory: C:/KOEL/PositionCreationExcels/ToBeProcessed
+  
+admin.email: talentpool9@talentica.co.in
+
+smtp: 
+   host: smtp.talentica.co.in
+   port: 25
+   mailFrom: talentpool9@talentica.co.in
+   password: Mail@123456
+   mailTo: ashwini.23990@gmail.com,ashwini.deshpande@talentica.com
+   subject: Positions Creation Failed While Processing Excel
+   message: Please find attachment to see list of Positions Failed While creating With reason.
